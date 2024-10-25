@@ -47,15 +47,29 @@ namespace DeveloperAssessment
             }
         }
 
-        // Function to read the CSV file using CsvHelper
-        private static List<dynamic> ReadCsv(string filePath)
+        // // Function to read the CSV file using CsvHelper
+        // private static List<dynamic> ReadCsv(string filePath)
+        // {
+        //     using (var reader = new StreamReader(filePath))
+        //     using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        //     {
+        //         return new List<dynamic>(csv.GetRecords<dynamic>());
+        //     }
+        // }
+        public static IEnumerable<SalesRecord> ReadCsv(string filePath)
         {
             using (var reader = new StreamReader(filePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                return new List<dynamic>(csv.GetRecords<dynamic>());
+                Delimiter = "|", // Specify the correct delimiter
+            }))
+            {
+                var records = csv.GetRecords<SalesRecord>().ToList();
+                return records;
             }
         }
+
+
 
         // Function to insert data into the Bold Orange Data Lake
         private static async Task<bool> InsertDataIntoDataLake(dynamic record)
@@ -77,4 +91,25 @@ namespace DeveloperAssessment
             }
         }
     }
+    public class SalesRecord
+    {
+        public string Segment { get; set; }
+        public string Country { get; set; }
+        public string Product { get; set; }
+        public string DiscountBand { get; set; }
+        public double UnitsSold { get; set; }
+        public decimal ManufacturingPrice { get; set; }
+        public decimal SalePrice { get; set; }
+        public decimal GrossSales { get; set; }
+        public decimal Discounts { get; set; }
+        public decimal Sales { get; set; }
+        public decimal COGS { get; set; }
+        public decimal Profit { get; set; }
+        public DateTime Date { get; set; }
+        public int MonthNumber { get; set; }
+        public string MonthName { get; set; }
+        public int Year { get; set; }
+    }
+
 }
+
