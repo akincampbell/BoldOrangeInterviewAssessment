@@ -14,7 +14,7 @@ namespace DeveloperAssessment
 {
     class Program
     {
-        private static readonly string apiUrl = "https://datalake.apidocs.boldorange.com/collections/YourNameExample";
+        private static readonly string apiUrl = "https://datalake.apidocs.boldorange.com/collections/AkinExample";
         private static readonly string username = "acampbell";  // Replace with actual username
         private static readonly string password = "your_password";  // Replace with actual password
 
