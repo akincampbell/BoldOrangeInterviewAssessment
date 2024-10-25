@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "FY9PtNB++0s=",
+  "success": true,
+  "projectFilePath": "/workspaces/BoldOrangeInterviewAssessment/DeveloperAssessment/DeveloperAssessment.csproj",
+  "expectedPackageFiles": [
+    "/home/codespace/.nuget/packages/csvhelper/33.0.1/csvhelper.33.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
